@@ -14,11 +14,13 @@ import {
 import { MMKV } from 'react-native-mmkv';
 
 import { api } from '../services/api';
+import authReducer from '../services/modules/auth/slice';
 import theme from './theme';
 
 const reducers = combineReducers({
   theme,
   [api.reducerPath]: api.reducer,
+  auth: authReducer,
 });
 
 const storage = new MMKV();
@@ -68,3 +70,6 @@ const persistor = persistStore(store);
 setupListeners(store.dispatch);
 
 export { store, persistor };
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

@@ -7,7 +7,6 @@ import {
 } from '@react-navigation/native';
 import { Startup } from '../screens';
 import { useTheme } from '../hooks';
-import MainNavigator from './Main';
 import { useFlipper } from '@react-navigation/devtools';
 import { ApplicationStackParamList } from '../../@types/navigation';
 import Welcome from '../screens/Welcome';
@@ -34,7 +33,6 @@ const ApplicationNavigator = () => {
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Signup" component={Signup} />
           <Stack.Screen name="Welcome" component={Welcome} />
-          <Stack.Screen name="Main" component={MainNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

@@ -21,7 +21,7 @@ const Welcome = ({ navigation }: ApplicationScreenProps) => {
       <Button mode="contained" onPress={() => navigation.navigate('Login')}>
         Sign in with password
       </Button>
-      <View>
+      <View className="bg-black">
         <Text>Don't have an account?</Text>
         <Button mode="text" onPress={() => navigation.navigate('Signup')}>
           Sign up
@@ -30,10 +30,5 @@ const Welcome = ({ navigation }: ApplicationScreenProps) => {
     </SafeAreaView>
   );
 };
-
-// const SafeAreaView = styled.SafeAreaView`
-//   display: flex;
-//   align-items: center;
-// `;
 
 export default Welcome;

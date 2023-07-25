@@ -14,6 +14,7 @@ export interface BaseInputProps {
   rightIcon?: React.ReactNode;
   inputMode?: InputModeOptions;
   error?: boolean;
+  className?: string;
   onChangeText: (text: string) => void;
   onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
 }
@@ -26,6 +27,7 @@ const BaseInput: React.FC<BaseInputProps> = ({
   secureTextEntry,
   error,
   inputMode,
+  className,
   onChangeText,
   onBlur,
 }) => {
@@ -34,13 +36,14 @@ const BaseInput: React.FC<BaseInputProps> = ({
       placeholder={placeholder}
       mode="outlined"
       inputMode={inputMode}
-      outlineStyle={{ borderRadius: 10 }}
+      outlineStyle={{ borderRadius: 10, borderWidth: 0 }}
       style={{ backgroundColor: '#fafafa' }}
       value={value}
       secureTextEntry={secureTextEntry}
       left={leftIcon}
       right={rightIcon}
       error={error}
+      className={className}
       onChangeText={onChangeText}
       onBlur={onBlur}
     />
@@ -54,6 +57,7 @@ BaseInput.defaultProps = {
   secureTextEntry: false,
   inputMode: 'text',
   error: false,
+  className: '',
   onBlur: () => {},
 };
 

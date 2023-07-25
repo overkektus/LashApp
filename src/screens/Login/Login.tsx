@@ -7,7 +7,7 @@ import { ApplicationScreenProps } from 'LashApp/@types/navigation';
 import EmailInput from 'LashApp/src/components/Inputs/EmailInput';
 import PasswordInput from 'LashApp/src/components/Inputs/PasswordInput';
 import { loginSchema } from './loginSchema';
-import GoogleIcon from 'LashApp/src/assets/google-icon.svg';
+// import GoogleIcon from 'LashApp/src/assets/google-icon.svg';
 
 interface ILoginState {
   email: string;
@@ -28,36 +28,54 @@ const Login = ({ navigation }: ApplicationScreenProps) => {
   };
 
   return (
-    <SafeAreaView>
-      <Text variant="displayLarge">Login to you Account</Text>
-      <Formik
-        initialValues={{ email: '', password: '' }}
-        onSubmit={handleLoginSubmit}
-        validationSchema={loginSchema}
-      >
-        {({ handleSubmit, handleChange, handleBlur, values }) => (
-          <View>
-            <EmailInput
-              value={values.email}
-              onChangeText={handleChange('email')}
-              onBlur={handleBlur('email')}
-            />
-            <PasswordInput
-              value={values.password}
-              onChangeText={handleChange('password')}
-              onBlur={handleBlur('password')}
-            />
-            <Button
-              mode="contained"
-              onPress={handleSubmit as any}
-              loading={isLoading}
-            >
-              Sign in
-            </Button>
-          </View>
-        )}
-      </Formik>
-      <GoogleIcon />
+    <SafeAreaView className="flex flex-column h-full mx-5 justify-evenly">
+      <View className="flex content-center align-middle py-10 ">
+        <Text variant="displayMedium">Login to you Account</Text>
+      </View>
+      <View>
+        <Formik
+          initialValues={{ email: '', password: '' }}
+          onSubmit={handleLoginSubmit}
+          validationSchema={loginSchema}
+        >
+          {({ handleSubmit, handleChange, handleBlur, values }) => (
+            <View>
+              <EmailInput
+                value={values.email}
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+              />
+              <View className="mt-4">
+                <PasswordInput
+                  value={values.password}
+                  onChangeText={handleChange('password')}
+                  onBlur={handleBlur('password')}
+                />
+              </View>
+              <Button
+                mode="contained"
+                onPress={handleSubmit as any}
+                loading={isLoading}
+                className="mt-4"
+              >
+                Sign in
+              </Button>
+            </View>
+          )}
+        </Formik>
+        <Button
+          mode="text"
+          // onPress={handleSubmit as any}
+          loading={isLoading}
+        >
+          Forgot the password?
+        </Button>
+      </View>
+      <View>
+        {/* <GoogleIcon /> */}
+        {/* <GoogleIcon /> */}
+        {/* <GoogleIcon /> */}
+      </View>
     </SafeAreaView>
   );
 };

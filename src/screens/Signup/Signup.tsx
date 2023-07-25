@@ -28,51 +28,58 @@ const Signup = ({ navigation }: ApplicationScreenProps) => {
   };
 
   return (
-    <SafeAreaView>
-      <Text variant="displayLarge">Create your Account</Text>
-      <Formik
-        initialValues={{ email: '', password: '', confirmPassword: '' }}
-        onSubmit={handleSignupSubmit}
-        validationSchema={signupSchema}
-      >
-        {({
-          handleSubmit,
-          handleChange,
-          handleBlur,
-          values,
-          errors,
-          touched,
-        }) => (
-          <View>
-            <EmailInput
-              value={values.email}
-              error={touched.email && !!errors.email}
-              onChangeText={handleChange('email')}
-              onBlur={handleBlur('email')}
-            />
-            <PasswordInput
-              value={values.password}
-              error={touched.password && !!errors.password}
-              onChangeText={handleChange('password')}
-              onBlur={handleBlur('password')}
-            />
-            <PasswordInput
-              placeholder="Confirm password"
-              value={values.confirmPassword}
-              error={touched.confirmPassword && !!errors.confirmPassword}
-              onChangeText={handleChange('confirmPassword')}
-              onBlur={handleBlur('confirmPassword')}
-            />
-            <Button
-              mode="contained"
-              onPress={handleSubmit as any}
-              loading={isLoading}
-            >
-              Sign up
-            </Button>
-          </View>
-        )}
-      </Formik>
+    <SafeAreaView className="h-full mx-5 justify-evenly">
+      <View>
+        <Text variant="displayMedium">Create your Account</Text>
+      </View>
+      <View>
+        <Formik
+          initialValues={{ email: '', password: '', confirmPassword: '' }}
+          onSubmit={handleSignupSubmit}
+          validationSchema={signupSchema}
+        >
+          {({
+            handleSubmit,
+            handleChange,
+            handleBlur,
+            values,
+            errors,
+            touched,
+          }) => (
+            <View>
+              <EmailInput
+                value={values.email}
+                error={touched.email && !!errors.email}
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+              />
+              <View className="my-4">
+                <PasswordInput
+                  value={values.password}
+                  error={touched.password && !!errors.password}
+                  onChangeText={handleChange('password')}
+                  onBlur={handleBlur('password')}
+                />
+              </View>
+              <PasswordInput
+                placeholder="Confirm password"
+                value={values.confirmPassword}
+                error={touched.confirmPassword && !!errors.confirmPassword}
+                onChangeText={handleChange('confirmPassword')}
+                onBlur={handleBlur('confirmPassword')}
+              />
+              <Button
+                mode="contained"
+                onPress={handleSubmit as any}
+                loading={isLoading}
+                className="mt-4"
+              >
+                Sign up
+              </Button>
+            </View>
+          )}
+        </Formik>
+      </View>
     </SafeAreaView>
   );
 };

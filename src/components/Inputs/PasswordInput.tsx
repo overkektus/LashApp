@@ -9,6 +9,7 @@ const PasswordInput: React.FC<Props> = ({
   placeholder,
   value,
   leftIcon,
+  className,
   onChangeText,
   onBlur,
 }) => {
@@ -33,6 +34,7 @@ const PasswordInput: React.FC<Props> = ({
       leftIcon={leftIcon}
       rightIcon={secureTextEntry ? eyeOffIcon : eyeIcon}
       secureTextEntry={secureTextEntry}
+      className={className}
       onChangeText={onChangeText}
       onBlur={onBlur}
     />

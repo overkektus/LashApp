@@ -21,7 +21,10 @@ const Login = ({ navigation }: ApplicationScreenProps) => {
     try {
       const data = await logIn(values).unwrap();
       Alert.alert(data.token);
-      navigation.navigate('Main');
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Main' }],
+      });
     } catch (error) {
       Alert.alert('error');
     }

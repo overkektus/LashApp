@@ -12,6 +12,7 @@ import { ApplicationStackParamList } from '../../@types/navigation';
 import Welcome from '../screens/Welcome';
 import Login from '../screens/Login/Login';
 import Signup from '../screens/Signup/Signup';
+import MainNavigator from './Main';
 
 const Stack = createStackNavigator<ApplicationStackParamList>();
 
@@ -28,11 +29,17 @@ const ApplicationNavigator = () => {
     <SafeAreaView style={[Layout.fill, { backgroundColor: colors.card }]}>
       <NavigationContainer theme={NavigationTheme} ref={navigationRef}>
         <StatusBar barStyle={darkMode ? 'light-content' : 'dark-content'} />
-        <Stack.Navigator screenOptions={{ headerShown: true }}>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: true,
+            title: '',
+          }}
+        >
           <Stack.Screen name="Startup" component={Startup} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Signup" component={Signup} />
           <Stack.Screen name="Welcome" component={Welcome} />
+          <Stack.Screen name="Main" component={MainNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
